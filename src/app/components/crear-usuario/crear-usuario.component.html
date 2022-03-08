@@ -1,0 +1,49 @@
+<div class="form-center">
+    <form [formGroup]="profileForm">
+        <h1>Crar Usuario</h1>
+        <mat-form-field appearance="standard">
+            <mat-label>Identificación</mat-label>
+            <input matInput type="number" formControlName="id" minlength="4" maxlength="11" required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error *ngIf="id?.errors?.['required']">La identificación es obligatoria.</mat-error>
+            <mat-error *ngIf="id?.errors?.['minlength'] || id?.errors?.['maxlength']">La identificación debe tener entre
+                4 y 11 dígitos</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Nombre completo</mat-label>
+            <input matInput type="text" pattern="[a-zA-Z]*" formControlName="name" minlength="1" maxlength="100"
+                required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error *ngIf="name?.errors?.['required']">El nombre es obligatorio.</mat-error>
+            <mat-error *ngIf="name?.errors?.['minlength'] || id?.errors?.['maxlength']">El nombre debe tener entre 1 y
+                100
+                caracteres</mat-error>
+            <mat-error *ngIf="name?.errors?.['pattern']">Solo puede escribir letras</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Genero</mat-label>
+            <mat-select formControlName="gender" required>
+                <mat-option value="Masculino">Masculino</mat-option>
+                <mat-option value="Femenino">Femenino</mat-option>
+                <mat-option value="Otro">Otro</mat-option>
+            </mat-select>
+            <mat-error *ngIf="gender?.errors?.['required']">El genero es obligatorio</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Número de télefono</mat-label>
+            <input matInput type="tel" pattern="^[6,3]/d{9}" formControlName="tel" required>
+            <mat-icon matSuffix>contact_phone</mat-icon>
+            <mat-error *ngIf="tel?.errors?.['required']">El telefono es obligatorio</mat-error>
+            <mat-error *ngIf="tel?.errors?.['pattern']">El telefono debe iniciar con 3 o 6 y debe tener 10 dígitos
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" required>
+            <mat-icon matSuffix>contact_mail</mat-icon>
+            <mat-error *ngIf="email?.errors?.['required']">El email es obligatorio</mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">El email es invalido</mat-error>
+        </mat-form-field>
+
+    </form>
+</div>
